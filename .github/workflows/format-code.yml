@@ -7,31 +7,9 @@ jobs:
   format:
     name: Format Code
 
-    if: github.event.head_commit.message != vars.FORMAT_COMMIT_MESSAGE
+    uses: trdev20-actions/workflows/.github/workflows/format.yml@main
 
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: CSI
-        uses: trdev20-actions/csi@v1
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
 
-      - name: Check format
-        id: check-format
-        run: |
-          bun check-format || echo "needs-format=true" >> $GITHUB_OUTPUT
 
-      - name: Format code
-        if: steps.check-format.outputs.needs-format == 'true'
-        run: bun format
-
-      - name: Commit changes
-        if: steps.check-format.outputs.needs-format == 'true'
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "${{ vars.FORMAT_COMMIT_MESSAGE }}"
-          git push
+    
