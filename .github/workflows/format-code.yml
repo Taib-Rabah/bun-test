@@ -9,7 +9,8 @@ jobs:
 
     uses: trdev20-actions/workflows/.github/workflows/format.yml@main
 
+    with:
+      app-id: ${{ vars.APP_ID }}
 
-
-
-    
+    secrets:
+      private-key: ${{ secrets.PRIVATE_KEY }}
