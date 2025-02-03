@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "format:check": "prettier --check .",
+    "check-format": "prettier --check .",
     "format": "prettier --write ."
   },
   "devDependencies": {
