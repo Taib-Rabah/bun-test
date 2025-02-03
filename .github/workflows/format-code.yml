@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: CSI
-        uses: trdev20-actions/csi
+        uses: trdev20-actions/csi@v1
         with:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
